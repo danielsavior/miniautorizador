@@ -6,6 +6,7 @@ import br.com.projeto.miniautorizador.dto.SaldoCartaoResponseDTO;
 import br.com.projeto.miniautorizador.exception.AutorizadorException;
 import br.com.projeto.miniautorizador.service.CartaoService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class CartaoController {
             summary = "Consultar saldo do cartao",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Cartao encontrado."),
-                    @ApiResponse(responseCode = "404", description = "Cartao inexistente.")
+                    @ApiResponse(responseCode = "404", description = "Cartao inexistente.", content = @Content())
             }
     )
     public ResponseEntity<SaldoCartaoResponseDTO> cartoes(@PathVariable String numeroCartao) throws AutorizadorException {
