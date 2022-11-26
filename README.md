@@ -14,24 +14,24 @@ Para realização desse projeto foram usadas as tecnologias listadas:
 
 ## Instalando miniautorizador
 
-Para instalar o miniautorizador, siga estas etapas:
+Para instalar o miniautorizador, siga os seguintes passos:
 
-Linux e macOS:
+1- Build o projeto:
 ```
-<comando_de_instalação>
+mvn clean install 
 ```
 
-Windows:
+2- Construa as imagens e suba os containers:
 ```
-<comando_de_instalação>
+docker-compose up
 ```
 
 ## Usando miniautorizador
 
-Para usar miniautorizador, siga estas etapas:
+Consulte o contrato das apis acessando o swagger disponível em:
 
 ```
-<exemplo_de_uso>
+http://localhost:8080/autorizador/swagger-ui.html
 ```
 
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
+De posse dessas informações faça os testes utilizando a ferramenta de sua preferência para realizar as requisições.
