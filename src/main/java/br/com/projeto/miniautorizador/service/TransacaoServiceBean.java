@@ -21,7 +21,9 @@ public class TransacaoServiceBean implements TransacaoService {
 
     @Override
     public void efetuarTransacao(TransacaoRequestDTO dto) throws AutorizadorException {
-        Cartao cartao = repository.findByNumeroCartao(dto.getNumeroCartao()).orElseThrow(() -> AutorizadorException.builder().status(HttpStatus.NOT_FOUND).detail("CARTAO_INEXISTENTE").build());
+        Cartao cartao = repository.findByNumeroCartao(dto.getNumeroCartao())
+                                  .orElseThrow(() -> AutorizadorException.builder().status(HttpStatus.NOT_FOUND)
+                                                                         .detail("CARTAO_INEXISTENTE").build());
         validador.validaTransacao(dto, cartao);
         cartao.setSaldo(cartao.getSaldo().subtract(dto.getValor()));
         repository.saveAndFlush(cartao);

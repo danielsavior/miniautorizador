@@ -13,11 +13,13 @@ public class AutorizadorControllerAdvice {
 
     @ExceptionHandler({AutorizadorException.class})
     public ResponseEntity<ErrorDTO> handlerAutorizadorException(AutorizadorException ex) {
-        return new ResponseEntity<>(ErrorDTO.builder().codigo(ex.getStatus().toString()).motivo(ex.getDetail()).build(), ex.getStatus());
+        return new ResponseEntity<>(ErrorDTO.builder().codigo(ex.getStatus().toString()).motivo(ex.getDetail())
+                                            .build(), ex.getStatus());
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
     public ResponseEntity<ErrorDTO> handlerMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-        return new ResponseEntity<>(ErrorDTO.builder().codigo(HttpStatus.BAD_REQUEST.toString()).motivo(ex.getLocalizedMessage()).build(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ErrorDTO.builder().codigo(HttpStatus.BAD_REQUEST.toString())
+                                            .motivo(ex.getLocalizedMessage()).build(), HttpStatus.BAD_REQUEST);
     }
 }

@@ -22,9 +22,10 @@ public class CartaoServiceBean implements CartaoService {
     @Override
     public CartaoResponseDTO criarCartao(CartaoRequestDTO dto) throws AutorizadorException {
 
-        CartaoResponseDTO cartaoResponseDTO = CartaoResponseDTO.builder().numeroCartao(dto.getNumeroCartao()).senha(dto.getSenha()).build();
+        CartaoResponseDTO cartaoResponseDTO = CartaoResponseDTO.builder().numeroCartao(dto.getNumeroCartao())
+                                                               .senha(dto.getSenha()).build();
         Optional<Cartao> optionalCartao = repository.findByNumeroCartao(dto.getNumeroCartao());
-        if(optionalCartao.isPresent()){
+        if (optionalCartao.isPresent()) {
             cartaoResponseDTO.setCartaoJaExistia(Boolean.TRUE);
             return cartaoResponseDTO;
         }
@@ -40,7 +41,9 @@ public class CartaoServiceBean implements CartaoService {
 
     @Override
     public SaldoCartaoResponseDTO consultarSaldoDoCartao(String numeroCartao) throws AutorizadorException {
-        Cartao cartao = repository.findByNumeroCartao(numeroCartao).orElseThrow(() -> AutorizadorException.builder().status(HttpStatus.NOT_FOUND).detail("Esse cartão não existe.").build());
+        Cartao cartao = repository.findByNumeroCartao(numeroCartao)
+                                  .orElseThrow(() -> AutorizadorException.builder().status(HttpStatus.NOT_FOUND)
+                                                                         .detail("Esse cartão não existe.").build());
         return SaldoCartaoResponseDTO.builder().saldo(cartao.getSaldo()).build();
     }
 }
