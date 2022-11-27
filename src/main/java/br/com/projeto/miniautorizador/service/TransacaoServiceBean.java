@@ -20,7 +20,7 @@ public class TransacaoServiceBean implements TransacaoService {
     private CartaoRepository repository;
 
     @Override
-    public void efetuarTransacao(TransacaoRequestDTO dto) throws AutorizadorException {
+    public synchronized void efetuarTransacao(TransacaoRequestDTO dto) throws AutorizadorException {
         Cartao cartao = repository.findByNumeroCartao(dto.getNumeroCartao())
                                   .orElseThrow(() -> AutorizadorException.builder().status(HttpStatus.NOT_FOUND)
                                                                          .detail("CARTAO_INEXISTENTE").build());
