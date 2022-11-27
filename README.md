@@ -20,6 +20,7 @@ Para instalar o miniautorizador, siga os seguintes passos:
 ```
 mvn clean install -DskipITs
 ```
+O comando acima faz o build do projeto pulando apenas os testes de integração, os testes unitários são executados.
 
 2- Construa as imagens e suba os containers:
 ```
