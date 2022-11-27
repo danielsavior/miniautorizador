@@ -18,7 +18,7 @@ Para instalar o miniautorizador, siga os seguintes passos:
 
 1- Build o projeto:
 ```
-mvn clean install 
+mvn clean install -DskipITs
 ```
 
 2- Construa as imagens e suba os containers:

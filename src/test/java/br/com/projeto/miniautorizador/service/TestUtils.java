@@ -11,7 +11,7 @@ public class TestUtils {
 
     public static final String NUMERO_CARTAO = "6549873025634501";
 
-    static final String SENHA_CARTAO = "6549873025634501";
+    static final String SENHA_CARTAO = "1234";
 
     static final BigDecimal SALDO_CARTAO = BigDecimal.ONE;
 
@@ -24,11 +24,11 @@ public class TestUtils {
         return Optional.of(cartao);
     }
 
-    static CartaoRequestDTO createCartaoRequestDTO() {
+    public static CartaoRequestDTO createCartaoRequestDTO() {
         return CartaoRequestDTO.builder().numeroCartao(NUMERO_CARTAO).senha(SENHA_CARTAO).build();
     }
 
-    public static TransacaoRequestDTO createTransacaoRequestDTO(BigDecimal saldo) {
-        return TransacaoRequestDTO.builder().numeroCartao(NUMERO_CARTAO).senha(SENHA_CARTAO).valor(saldo).build();
+    public static TransacaoRequestDTO createTransacaoRequestDTO(BigDecimal valor) {
+        return TransacaoRequestDTO.builder().numeroCartao(NUMERO_CARTAO).senha(SENHA_CARTAO).valor(valor).build();
     }
 }
